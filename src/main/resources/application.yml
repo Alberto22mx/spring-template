@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: spring-template
+  profiles:
+    default: dev
+  datasource:
+    url: jdbc:h2:mem:template_db
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+application:
+  security:
+    jwt:
+      secret-key: ${JWT_SECRET_KEY:7f1c9e4a8b2d6f0e3c5a9b1d4f8e2c6a0b3d7f1e5c9a2b6d0f4e8c1a5b9d3f7}
+      expiration: 3600000
+      issuer: spring-template-api
